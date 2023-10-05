@@ -27,10 +27,10 @@ RUN export PATH="/usr/local/cmake/bin:$PATH"
 RUN cmake3 --version
 RUN which root-config
 ADD https://github.com/JeffersonLab/analyzer/archive/refs/tags/Release-${APP_VERSION}.tar.gz .
-RUN tar -xvf Release-170.tar.gz
-WORKDIR "/analyzer-Release-170"
+RUN tar -xvf Release-${APP_VERSION}.tar.gz
+WORKDIR "/analyzer-Release-${APP_VERSION}"
 RUN mkdir build
-WORKDIR "/analyzer-Release-170/build"
+WORKDIR "/analyzer-Release-${APP_VERSION}/build"
 RUN cmake3 -DCMAKE_INSTALL_PREFIX=$HOME/local/analyzer ..
 RUN make  install -j
 ENV PATH="~/local/analyzer/bin:$PATH"
