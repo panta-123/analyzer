@@ -6,8 +6,9 @@ COPY packages_root packages
 RUN yum update -q -y
 RUN yum group list
 ARG DOCKER_TAG
-RUN export APP="${DOCKER_TAG//.}"
+ENV APP="${DOCKER_TAG//.}"
 ENV APP_VERSION=$APP
+RUN echo $APP_VERSION
 
 RUN yum -y install epel-release && \
     yum -y install scons && \
